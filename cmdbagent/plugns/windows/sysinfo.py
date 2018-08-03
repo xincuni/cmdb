@@ -25,7 +25,7 @@ def collect():
     data.update(win32obj.get_disk_info())
     data.update(win32obj.get_nic_info())
     print('-----------><>>>>>>>')
-    # print json.dumps(data)
+    # print (json.dumps(data))
 
 
     # for k,v in data.items():
@@ -134,7 +134,7 @@ class Win32Info(object):
     def get_nic_info(self):
         data = []
         for nic in self.wmi_obj.Win32_NetworkAdapterConfiguration():
-            print(nic)
+            # print(nic)
             if nic.MACAddress is not None:
                 item_data = {}
                 item_data['macaddress'] = nic.MACAddress
@@ -150,6 +150,7 @@ class Win32Info(object):
                 # print nic.MACAddress ,nic.IPAddress,nic.ServiceName,nic.Caption,nic.IPSubnet
                 # print item_data
                 data.append(item_data)
+                # print(json.dumps(data))
         return {'nic': data}
 
 
