@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
-import sys, os, platform
-from core import HouseStark
-
-print(platform.system())
-if platform.system() == 'Linux':  # 判断系统版本
-    Base_Dir = '/'.join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
-    print(Base_Dir)
+#-*- coding:utf-8 -*-
+import os,sys,platform
+if platform.system() == "Windows":
+    BASE_DIR = '\\'.join(os.path.abspath(os.path.dirname(__file__)).split('\\')[:-1])
+    print BASE_DIR
 else:
-    Base_Dir = '//'.join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
-
-sys.path.append(Base_Dir)  # 添加环境变量
-
+    BASE_DIR = '/'.join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
+sys.path.append(BASE_DIR)
+print BASE_DIR
+from core import HouseStark
 if __name__ == '__main__':
-    HouseStark.ArgvHandler(sys.argv)  # 传参数调用核心模块
+    HouseStark.ArgvHandler(sys.argv)
+

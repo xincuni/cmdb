@@ -1,7 +1,9 @@
-#-*- coding:utf-8 -*-
+#_*_coding:utf-8_*_
+
 
 from plugins import plugin_api
-import  json,platform,sys
+import json,platform,sys
+
 
 class InfoCollection(object):
     def __init__(self):
@@ -17,12 +19,9 @@ class InfoCollection(object):
 
     def collect(self):
         os_platform = self.get_platform()
-        #os_platform
         try:
-            #getattr getattr(self,Windows)
             func = getattr(self,os_platform)
             #func=Windows
-            #self.Windows()
             info_data = func()    # Windows()
             formatted_data = self.build_report_data(info_data)
             return formatted_data
@@ -35,7 +34,6 @@ class InfoCollection(object):
 
     def Windows(self):
         sys_info = plugin_api.WindowsSysInfo()
-        #sys_info =data
         print(sys_info)
         return sys_info
     def build_report_data(self,data):
